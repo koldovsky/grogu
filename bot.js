@@ -68,3 +68,15 @@ client.on('message', (message) => {
     } 
   }
 });
+
+// simple express server to keep app awake as web server
+const express = require('express');
+const app = express();
+// get port from environment 
+const port = process.env.PORT || 3000;
+// serve health check route
+app.get('/health', (req, res) => res.send('Grogu is ready!'));
+// start server
+app.listen(port, () => console.log(`Grogu is listening on port ${port}!`));
+
+
