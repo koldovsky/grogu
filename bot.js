@@ -46,7 +46,10 @@ client.on('message', (message) => {
   const args = commandBody.split(' ');
   const command = args.shift().toLowerCase();
 
-  if (command === 'ready') {
+  // get process id of node process
+  if (command === 'pid') {
+    message.reply(process.pid);
+  } else if (command === 'ready') {
     message.reply('yes');
   } else if (command === 'status') {
     doStatusRequest();
@@ -62,7 +65,7 @@ client.on('message', (message) => {
     const code = args.join(' ');
     try {
       const evaled = eval(code);
-      message.replay(evaled);
+      message.reply(evaled);
     } catch (err) {
       message.reply(`Error: ${err.message}`);
     } 
