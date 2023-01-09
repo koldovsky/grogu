@@ -75,7 +75,8 @@ const app = express();
 // get port from environment 
 const port = process.env.PORT || 3000;
 // serve health check route
-app.get('/health', (req, res) => res.send('Grogu is ready!'));
+app.get('/', (req, res) => res.send('Grogu is ready!'));
+app.get('/health', (req, res) => res.send('Grogu is alive!'));
 // start server
 app.listen(port, () => console.log(`Grogu is listening on port ${port}!`));
 
